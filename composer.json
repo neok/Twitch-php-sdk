@@ -1,0 +1,23 @@
+{
+  "name": "neok/twitch-helper",
+  "type": "library",
+  "description": "Easy twitch api usage",
+  "keywords": ["php", "twitch", "api"],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Petr Popelyshko",
+      "email": "petrneok@gmail.com",
+      "homepage": "https://github.com/neok"
+    }
+  ],
+  "require": {
+    "php": ">=5.6",
+    "guzzlehttp/guzzle": "@stable"
+  },
+  "autoload": {
+    "psr-4": {
+      "TwitchHelper\\": "src"
+    }
+  }
+}
