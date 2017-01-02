@@ -40,4 +40,21 @@ class MediaItem extends AbstractParams
      * @var string
      */
     protected $template;
+
+    /**
+     * Get template by dimension.
+     *
+     * @param float $width
+     * @param float $height
+     *
+     * @return string
+     */
+    public function getTemplateByDimension($width, $height)
+    {
+        return str_replace(
+            ['{width}', '{height}'],
+            [(float) $width, (float) $height],
+            $this->getTemplate()
+        );
+    }
 }

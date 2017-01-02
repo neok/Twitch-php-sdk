@@ -1,4 +1,5 @@
 <?php
+
 namespace TwitchHelper\Params;
 
 use Guzzle\Inflection\Inflector;
@@ -8,6 +9,10 @@ use TwitchHelper\Params\Games\MediaItem;
 
 /**
  * Class AbstractParams
+ *
+ * Default setters and getters for endpoints.
+ *
+ * @author Petr Popelyshko <petrneok@gmail.com>
  */
 abstract class AbstractParams
 {
@@ -18,13 +23,13 @@ abstract class AbstractParams
     /**
      * @var array
      */
-    private static $filterable = ['bool', 'boolean', 'int', 'integer', 'float', 'string'];
-
+    private static $filterableTypes = ['bool', 'int', 'float', 'string'];
+    /** @var array */
     private static $classArray = [
         'Item[]' => Item::class,
 
     ];
-
+    /** @var array */
     private static $class = [
         'MediaItem' => MediaItem::class,
         'Game'      => Game::class,
@@ -37,7 +42,6 @@ abstract class AbstractParams
     {
         $this->reflection = new \ReflectionClass($this);
         if (!empty($params)) {
-
             foreach ($params as $param => $value) {
                 $param  = 'set' . ucfirst(($param[0] === '_' ? substr($param, 1) : $param));
                 $setter = lcfirst(Inflector::getDefault()->camel($param));
@@ -56,23 +60,21 @@ abstract class AbstractParams
     {
         $prefix = substr($name, 0, 3);
         $name   = lcfirst(substr($name, 3));
-        if (in_array($name, ['reflection', 'filterable', 'paramErrors'])) {
-            return false;
-        }
         if (!property_exists($this, $name)) {
             return false;
         } else {
             switch ($prefix) {
-                case "get":
-                    return $this->defaultGetter($name);
-                    break;
-                case "set":
-                    if (!isset($arguments[0])) {
+                case 'set':
+                    if (!array_key_exists(0, $arguments)) {
                         return false;
                     }
                     $this->defaultSetter($name, $arguments[0]);
                     break;
+                case 'get':
+                    return $this->defaultGetter($name);
+                    break;
                 default:
+                    break;
             }
         }
 
@@ -80,32 +82,31 @@ abstract class AbstractParams
     }
 
     /**
-     * @param $param
-     * @param $value
+     * @param mixed $param
+     * @param mixed $value
      *
      * @return $this
      */
     protected function defaultSetter($param, $value)
     {
-        $propery   = $this->reflection->getProperty($param);
-        $comment = $propery->getDocComment();
+        $property = $this->reflection->getProperty($param);
+        $comment  = $property->getDocComment();
         preg_match("/@var (.*)$/m", $comment, $type);
 
-        if (2 == count($type) && !empty($type[1])) {
+        if (count($type) === 2 && !empty($type[1])) {
             $type = trim($type[1]);
         }
 
-        if (in_array($type, self::$filterable)) {
+        if (in_array($type, self::$filterableTypes)) {
             settype($value, $type);
             $this->$param = $value;
         } elseif (!is_array($type) && array_key_exists($type, self::$classArray)) {
-            $item      = [];
             $className = self::$classArray[$type];
-            //@array_map?
-            foreach ($value as $pm => $val) {
-                $item[] = new $className($val);
-            }
-            $this->$param = $item;
+            $this->$param = array_map(
+                function ($val) use ($className) {
+                    return new $className($val);
+                }, $value
+            );
         } elseif (!is_array($type) && array_key_exists($type, self::$class)) {
             $className    = self::$class[$type];
             $this->$param = new $className($value);
@@ -118,7 +119,7 @@ abstract class AbstractParams
     }
 
     /**
-     * @param $param
+     * @param string $param
      *
      * @return mixed
      */
