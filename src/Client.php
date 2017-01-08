@@ -4,10 +4,26 @@ namespace TwitchHelper;
 
 class Client
 {
-    private $secret;
+    const BASE_URL = 'https://api.twitch.tv/kraken';
 
-    public function __construct($secret)
+    const ENDPOINT_GAMES = '/games/top';
+
+    /**
+     * Client Id.
+     *
+     * @var string
+     */
+    protected $clientId;
+
+    protected $httpClient;
+
+    public function __construct($clientId)
     {
-        $this->secret = $secret;
+        $this->clientId = $clientId;
+    }
+
+    public function sendRequest(TwitchRequest $twitchRequest)
+    {
+        return [];
     }
 }
