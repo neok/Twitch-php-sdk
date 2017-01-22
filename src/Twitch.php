@@ -47,10 +47,4 @@ class Twitch
         $this->oAuth2Client = new OAuth2Client($this->twitchApp, $this->client);
     }
 
-    public function sendRequest(string $method, string $endpoint, array $params = []) : array
-    {
-        $request = new TwitchRequest($method, $endpoint, $params);
-
-        return $this->client->sendRequest($request);
-    }
 }

@@ -27,6 +27,6 @@ class TwitchClient
      */
     public function sendRequest(TwitchRequest $twitchRequest)
     {
-        return $this->httpClient->send($twitchRequest->getMethod(), $twitchRequest->getEndpoint());
+        return $this->httpClient->send($twitchRequest->getEndpoint(), $twitchRequest->getMethod(), null, $twitchRequest->getHeaders());
     }
 }

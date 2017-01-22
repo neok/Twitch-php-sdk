@@ -19,6 +19,10 @@ class TwitchRequest
      * @var string
      */
     private $accessToken;
+    /**
+     * @var array
+     */
+    private $headers;
 
     /**
      * TwitchRequest constructor.
@@ -106,6 +110,30 @@ class TwitchRequest
         if ($accessToken instanceof AccessToken) {
             $this->accessToken = $accessToken->getAccessToken();
         }
+
+        return $this;
+    }
+
+    /**
+     * Gets Headers
+     *
+     * @return array
+     */
+    public function getHeaders()
+    {
+        return $this->headers;
+    }
+
+    /**
+     * Sets Headers
+     *
+     * @param array $headers
+     *
+     * @return $this
+     */
+    public function setHeaders(array $headers)
+    {
+        $this->headers = $headers;
 
         return $this;
     }

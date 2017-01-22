@@ -2,7 +2,6 @@
 
 namespace TwitchHelper\HttpClient;
 
-use GuzzleHttp\Psr7\Request;
 use TwitchHelper\Http\TwitchRawResponse;
 
 /**
@@ -29,17 +28,21 @@ class GuzzleHttpClient implements HttpClientInterface
      * @param string $url
      * @param string $method
      * @param null   $body
+     * @param array  $headers
      *
      * @return TwitchRawResponse
      */
-    public function send($url, $method, $body = null)
+    public function send($url, $method, $body = null, array $headers = [])
     {
-        $request = new Request($method, $url);
-        $result = $this->guzzleClient->send($request);
 
+        $request = $this->guzzleClient->createRequest($method, $url);
+        $request->setHeaders($headers);
+
+        $result      = $this->guzzleClient->send($request);
         $rawResponse = new TwitchRawResponse();
         $rawResponse->setBody($result->getBody());
         $rawResponse->setStatus($result->getStatusCode());
+
 
         return $rawResponse;
     }

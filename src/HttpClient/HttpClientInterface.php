@@ -16,5 +16,5 @@ interface HttpClientInterface
      *
      * @return TwitchRawResponse
      */
-    public function send($url, $method, $body = null);
+    public function send($url, $method, $body = null, array $headers = []);
 }

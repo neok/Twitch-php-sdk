@@ -13,7 +13,7 @@
   ],
   "require": {
     "php": ">=7.0",
-    "guzzlehttp/guzzle": "@stable",
+    "guzzlehttp/guzzle": "~5.0",
     "guzzle/inflection": "^3.9",
     "symfony/var-dumper": "^3.2"
   },
