@@ -2,7 +2,19 @@
 
 namespace TwitchHelper\HttpClient;
 
+use TwitchHelper\Http\TwitchRawResponse;
+
+/**
+ * Interface HttpClientInterface
+ */
 interface HttpClientInterface
 {
-    public function send($url, $method, $body);
+    /**
+     * @param string $url
+     * @param string $method
+     * @param null   $body
+     *
+     * @return TwitchRawResponse
+     */
+    public function send($url, $method, $body = null);
 }

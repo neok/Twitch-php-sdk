@@ -2,10 +2,111 @@
 
 namespace TwitchHelper;
 
+use TwitchHelper\Authentication\AccessToken;
+
 class TwitchRequest
 {
-    public function __construct()
-    {
+    /**
+     * @var string
+     */
+    private $method;
+    /**
+     * @var string
+     */
+    private $endpoint;
 
+    /**
+     * @var string
+     */
+    private $accessToken;
+
+    /**
+     * TwitchRequest constructor.
+     *
+     * @param string $method
+     * @param string $endpoint
+     */
+    public function __construct(string $method, string $endpoint, AccessToken $accessToken = null)
+    {
+        $this->setEndpoint($endpoint);
+        $this->setEndpoint($endpoint);
+        if ($accessToken) {
+            $this->setAccessToken($accessToken->getAccessToken());
+        }
+    }
+
+    /**
+     * Gets Method
+     *
+     * @return string
+     */
+    public function getMethod()
+    {
+        return $this->method;
+    }
+
+    /**
+     * Sets Method
+     *
+     * @param string $method
+     *
+     * @return $this
+     */
+    public function setMethod(string $method)
+    {
+        $this->method = $method;
+
+        return $this;
+    }
+
+    /**
+     * Gets Endpoint
+     *
+     * @return string
+     */
+    public function getEndpoint()
+    {
+        return $this->endpoint;
+    }
+
+    /**
+     * Sets Endpoint
+     *
+     * @param string $endpoint
+     *
+     * @return $this
+     */
+    public function setEndpoint(string $endpoint)
+    {
+        $this->endpoint = $endpoint;
+
+        return $this;
+    }
+
+    /**
+     * Gets AccessToken
+     *
+     * @return string
+     */
+    public function getAccessToken()
+    {
+        return $this->accessToken;
+    }
+
+    /**
+     * Sets AccessToken
+     *
+     * @param string $accessToken
+     *
+     * @return $this
+     */
+    public function setAccessToken($accessToken)
+    {
+        $this->accessToken = $accessToken;
+        if ($accessToken instanceof AccessToken) {
+            $this->accessToken = $accessToken->getAccessToken();
+        }
+
+        return $this;
     }
 }

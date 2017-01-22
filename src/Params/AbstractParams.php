@@ -1,4 +1,5 @@
 <?php
+declare(strict_types=1);
 
 namespace TwitchHelper\Params;
 
@@ -87,7 +88,7 @@ abstract class AbstractParams
      *
      * @return $this
      */
-    protected function defaultSetter($param, $value)
+    protected function defaultSetter(string $param, $value)
     {
         $property = $this->reflection->getProperty($param);
         $comment  = $property->getDocComment();
@@ -123,7 +124,7 @@ abstract class AbstractParams
      *
      * @return mixed
      */
-    protected function defaultGetter($param)
+    protected function defaultGetter(string $param)
     {
         return $this->$param;
     }
