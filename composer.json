@@ -14,12 +14,20 @@
   "require": {
     "php": ">=7.0",
     "guzzlehttp/guzzle": "~5.0",
-    "guzzle/inflection": "^3.9",
-    "symfony/var-dumper": "^3.2"
+    "guzzle/guzzle": "^3.9"
   },
   "autoload": {
     "psr-4": {
-      "TwitchHelper\\": "src"
+      "TwitchHelper\\": "src/"
     }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TwitchHelper\\Tests\\": "tests/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "^5.7",
+    "symfony/var-dumper": "^3.2"
   }
 }

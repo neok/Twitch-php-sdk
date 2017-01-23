@@ -1,1 +1,1 @@
-####Php twitch api helper library
+####Unofficial Twitch SDK library.
