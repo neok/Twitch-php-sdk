@@ -5,6 +5,9 @@ namespace TwitchHelper;
 
 use TwitchHelper\HttpClient\HttpClientInterface;
 
+/**
+ * Class TwitchClient
+ */
 class TwitchClient
 {
     public const BASE_URL = 'https://api.twitch.tv/kraken';

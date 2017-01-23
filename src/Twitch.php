@@ -41,7 +41,11 @@ class Twitch
         if (!isset($config['unique_token'])) {
             throw new TwitchHelperException('Unique token is missing');
         }
-        $this->twitchApp = new TwitchApp($config['app_id'], $config['secret'], $config['unique_token']);
+
+        if (!isset($config['redirect_uri'])) {
+            throw new TwitchHelperException('Redirect uri is missing');
+        }
+        $this->twitchApp = new TwitchApp($config['app_id'], $config['secret'], $config['unique_token'], $config['redirect_uri']);
         //@todo create factory later for client creation
         $this->client = new TwitchClient(new GuzzleHttpClient(new Client()));
         $this->oAuth2Client = new OAuth2Client($this->twitchApp, $this->client);

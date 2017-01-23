@@ -52,17 +52,16 @@ class OAuth2Client
 
     /**
      * @param string $authorizationCode
-     * @param string $redirectUri
      *
      * @return \TwitchHelper\Http\TwitchRawResponse
      */
-    public function getAccessToken(string $authorizationCode, string $redirectUri)
+    public function getAccessToken(string $authorizationCode)
     {
         $url = sprintf(
             TwitchClient::BASE_URL . '/oauth2/token?client_id=%s&client_secret=%s&grant_type=authorization_code&redirect_uri=%s&code=%s&state=%s',
             $this->app->getClientId(),
             $this->app->getSecret(),
-            $redirectUri,
+            $this->app->getRedirectUri(),
             $authorizationCode,
             $this->app->getUniqueToken()
         );
