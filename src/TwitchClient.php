@@ -10,7 +10,7 @@ use TwitchHelper\HttpClient\HttpClientInterface;
  */
 class TwitchClient
 {
-    public const BASE_URL = 'https://api.twitch.tv/kraken';
+    public const  BASE_URL       = 'https://api.twitch.tv/kraken';
     private const ENDPOINT_GAMES = '/games/top';
 
     /**
