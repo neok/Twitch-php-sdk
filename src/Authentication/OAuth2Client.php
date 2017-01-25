@@ -53,7 +53,7 @@ class OAuth2Client
     /**
      * @param string $authorizationCode
      *
-     * @return \TwitchHelper\Http\TwitchRawResponse
+     * @return \TwitchHelper\TwitchResponse
      */
     public function getAccessToken(string $authorizationCode)
     {

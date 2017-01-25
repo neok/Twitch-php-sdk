@@ -26,10 +26,17 @@ class TwitchClient
     /**
      * @param TwitchRequest $twitchRequest
      *
-     * @return Http\TwitchRawResponse
+     * @return TwitchResponse
      */
     public function sendRequest(TwitchRequest $twitchRequest)
     {
-        return $this->httpClient->send($twitchRequest->getEndpoint(), $twitchRequest->getMethod(), null, $twitchRequest->getHeaders());
+        $response = $this->httpClient->send($twitchRequest->getEndpoint(), $twitchRequest->getMethod(), null, $twitchRequest->getHeaders());
+
+        $twitchResponse = new TwitchResponse();
+        $twitchResponse
+            ->setBody($response->getBody())
+            ->setHttpStatusCode($response->getStatus());
+
+        return $twitchResponse;
     }
 }

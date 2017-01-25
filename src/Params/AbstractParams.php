@@ -1,5 +1,5 @@
 <?php
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace TwitchHelper\Params;
 
@@ -102,7 +102,7 @@ abstract class AbstractParams
             settype($value, $type);
             $this->$param = $value;
         } elseif (!is_array($type) && array_key_exists($type, self::$classArray)) {
-            $className = self::$classArray[$type];
+            $className    = self::$classArray[$type];
             $this->$param = array_map(
                 function ($val) use ($className) {
                     return new $className($val);
