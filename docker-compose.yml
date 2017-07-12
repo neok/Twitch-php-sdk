@@ -1,0 +1,5 @@
+twitch_php:
+    build: ./
+    volumes:
+        - ../:/project
+    working_dir: /project
