@@ -19,7 +19,7 @@ before_install:
 
 script:
   - docker-compose up -d
-  -  docker run -it --rm -v $(pwd):/project twitchhelper_swn_php:latest "phpunit"
+  -  docker run -it --rm -v $(pwd):/project twitch_php "phpunit"
 
 #before_install:
 #  - travis_retry composer self-update
