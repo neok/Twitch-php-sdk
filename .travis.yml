@@ -1,14 +1,32 @@
 language: php
 
+sudo: required
+
+services:
+  - docker
+
 php:
   - '7.0'
   - '7.1'
-
+env:
+  - DOCKER_COMPOSE_VERSION=1.4.2
 before_install:
-  - travis_retry composer self-update
+  - sudo rm /usr/local/bin/docker-compose
+  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+  - chmod +x docker-compose
+  - sudo mv docker-compose /usr/local/bin
 
 install:
-  - travis_retry composer install --prefer-dist --no-interaction
+  - docker-compose up -d --build
 
 script:
-  - vendor/bin/phpunit --coverage-text --exclude-group integration
+  -  docker run -it --rm -v $(pwd):/project twitchhelper_swn_php:latest "phpunit"
+
+#before_install:
+#  - travis_retry composer self-update
+
+#install:
+#  - travis_retry composer install --prefer-dist --no-interaction
+#
+#script:
+#  - vendor/bin/phpunit --coverage-text --exclude-group integration
