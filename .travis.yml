@@ -4,12 +4,10 @@ sudo: required
 
 services:
   - docker
-#
-#php:
-#  - '7.0'
-#  - '7.1'
+
 env:
   - DOCKER_COMPOSE_VERSION=1.4.2
+
 before_install:
   - sudo rm /usr/local/bin/docker-compose
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
@@ -18,15 +16,5 @@ before_install:
 
 
 script:
-  - docker build -t php_twitch .
   - docker-compose up -d
-  - docker run -it --rm -v $(pwd):/project php_twitch:latest "phpunit"
-
-#before_install:
-#  - travis_retry composer self-update
-
-#install:
-#  - travis_retry composer install --prefer-dist --no-interaction
-#
-#script:
-#  - vendor/bin/phpunit --coverage-text --exclude-group integration
+  - docker run -it --rm -v $(pwd):/project twitchhelper_twitch_php "phpunit"
