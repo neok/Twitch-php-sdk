@@ -16,15 +16,15 @@ class Twitch
     /**
      * @var TwitchApp
      */
-    public $twitchApp;
+    private $twitchApp;
     /**
      * @var TwitchClient
      */
-    public $client;
+    private $client;
     /**
      * @var OAuth2Client
      */
-    public $oAuth2Client;
+    private $oAuth2Client;
 
     protected $request;
 
@@ -51,4 +51,33 @@ class Twitch
         $this->oAuth2Client = new OAuth2Client($this->twitchApp, $this->client);
     }
 
+    /**
+     * Gets TwitchApp.
+     *
+     * @return TwitchApp
+     */
+    public function getTwitchApp(): TwitchApp
+    {
+        return $this->twitchApp;
+    }
+
+    /**
+     * Gets Client.
+     *
+     * @return TwitchClient
+     */
+    public function getClient(): TwitchClient
+    {
+        return $this->client;
+    }
+
+    /**
+     * Gets OAuth2Client.
+     *
+     * @return OAuth2Client
+     */
+    public function getOAuth2Client(): OAuth2Client
+    {
+        return $this->oAuth2Client;
+    }
 }

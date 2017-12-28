@@ -22,7 +22,7 @@ class TwitchRequest
     /**
      * @var array
      */
-    private $headers;
+    private $headers = [];
 
     /**
      * TwitchRequest constructor.
@@ -32,7 +32,7 @@ class TwitchRequest
      */
     public function __construct(string $method, string $endpoint, AccessToken $accessToken = null)
     {
-        $this->setEndpoint($endpoint);
+        $this->setMethod($method);
         $this->setEndpoint($endpoint);
         if ($accessToken) {
             $this->setAccessToken($accessToken->getAccessToken());

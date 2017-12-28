@@ -34,10 +34,10 @@ class GuzzleHttpClient implements HttpClientInterface
      */
     public function send($url, $method, $body = null, array $headers = [])
     {
-
         $request = $this->guzzleClient->createRequest($method, $url);
-        $request->setHeaders($headers);
-
+        if ($headers) {
+            $request->setHeaders($headers);
+        }
         $result      = $this->guzzleClient->send($request);
         $rawResponse = new TwitchRawResponse();
         $rawResponse->setBody($result->getBody());

@@ -11,6 +11,7 @@ use Neok\Twitch\HttpClient\HttpClientInterface;
 class TwitchClient
 {
     public const  BASE_URL       = 'https://api.twitch.tv/kraken';
+    public const  HELIX_URL      = 'https://api.twitch.tv/helix';
     private const ENDPOINT_GAMES = '/games/top';
 
     /**
@@ -30,7 +31,12 @@ class TwitchClient
      */
     public function sendRequest(TwitchRequest $twitchRequest)
     {
-        $response = $this->httpClient->send($twitchRequest->getEndpoint(), $twitchRequest->getMethod(), null, $twitchRequest->getHeaders());
+        $response = $this->httpClient->send(
+            $twitchRequest->getEndpoint(),
+            $twitchRequest->getMethod(),
+            null,
+            $twitchRequest->getHeaders()
+        );
 
         $twitchResponse = new TwitchResponse();
         $twitchResponse

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace Neok\Twitch\Authentication;
@@ -8,7 +9,7 @@ use Neok\Twitch\TwitchClient;
 use Neok\Twitch\TwitchRequest;
 
 /**
- * Class OAuth2Client
+ * Class OAuth2Client.
  */
 class OAuth2Client
 {
@@ -34,17 +35,16 @@ class OAuth2Client
     }
 
     /**
-     * @param string $redirectUri
-     * @param array  $scopes
+     * @param array $scopes
      *
      * @return string
      */
-    public function getAuthenticationUrl(string $redirectUri, array $scopes) : string
+    public function getAuthenticationUrl(array $scopes): string
     {
         return sprintf(
-            TwitchClient::BASE_URL . '/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=%s&scope=&%&state=%s',
+            TwitchClient::BASE_URL.'/oauth2/authorize?response_type=code&client_id=%s&redirect_uri=%s&scope=%s&state=%s',
             $this->app->getClientId(),
-            $redirectUri,
+            $this->app->getRedirectUri(),
             implode(',', $scopes),
             $this->app->getUniqueToken()
         );
@@ -58,7 +58,7 @@ class OAuth2Client
     public function getAccessToken(string $authorizationCode)
     {
         $url = sprintf(
-            TwitchClient::BASE_URL . '/oauth2/token?client_id=%s&client_secret=%s&grant_type=authorization_code&redirect_uri=%s&code=%s&state=%s',
+            TwitchClient::BASE_URL.'/oauth2/token?client_id=%s&client_secret=%s&grant_type=authorization_code&redirect_uri=%s&code=%s&state=%s',
             $this->app->getClientId(),
             $this->app->getSecret(),
             $this->app->getRedirectUri(),
@@ -67,9 +67,8 @@ class OAuth2Client
         );
 
         $request = new TwitchRequest('POST', $url);
-        $request->setHeaders(['Client-ID' => $this->app->getClientId()]);
+//        $request->setHeaders(['Client-ID' => $this->app->getClientId()]);
 
         return $this->client->sendRequest($request);
     }
-
 }
