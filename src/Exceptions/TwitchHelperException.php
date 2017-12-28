@@ -1,6 +1,6 @@
 <?php
 
-namespace TwitchHelper\Exceptions;
+namespace Neok\Twitch\Exceptions;
 
 /**
  * Class TwitchHelperException

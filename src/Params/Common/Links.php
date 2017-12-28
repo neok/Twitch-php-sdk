@@ -1,8 +1,8 @@
 <?php
 
-namespace TwitchHelper\Params\Common;
+namespace Neok\Twitch\Params\Common;
 
-use TwitchHelper\Params\AbstractParams;
+use Neok\Twitch\Params\AbstractParams;
 
 /**
  * Class Links

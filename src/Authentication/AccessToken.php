@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace TwitchHelper\Authentication;
+namespace Neok\Twitch\Authentication;
 
 /**
  * Class AccessToken

@@ -1,11 +1,11 @@
 <?php
 declare(strict_types=1);
 
-namespace TwitchHelper\Authentication;
+namespace Neok\Twitch\Authentication;
 
-use TwitchHelper\TwitchApp;
-use TwitchHelper\TwitchClient;
-use TwitchHelper\TwitchRequest;
+use Neok\Twitch\TwitchApp;
+use Neok\Twitch\TwitchClient;
+use Neok\Twitch\TwitchRequest;
 
 /**
  * Class OAuth2Client
@@ -53,7 +53,7 @@ class OAuth2Client
     /**
      * @param string $authorizationCode
      *
-     * @return \TwitchHelper\TwitchResponse
+     * @return \Neok\Twitch\TwitchResponse
      */
     public function getAccessToken(string $authorizationCode)
     {

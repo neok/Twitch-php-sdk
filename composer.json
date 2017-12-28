@@ -1,5 +1,5 @@
 {
-  "name": "neok/twitch-helper",
+  "name": "neok/Twitch-php-sdk",
   "type": "library",
   "description": "Easy twitch api usage",
   "keywords": ["php", "twitch", "api"],
@@ -7,7 +7,7 @@
   "authors": [
     {
       "name": "Petr Popelyshko",
-      "email": "petrneok@gmail.com",
+      "email": "p.popelyshko@gmail.com",
       "homepage": "https://github.com/neok"
     }
   ],
@@ -18,7 +18,7 @@
   },
   "autoload": {
     "psr-4": {
-      "TwitchHelper\\": "src/"
+      "Neok\\Twitch\\": "src/"
     }
   },
   "autoload-dev": {

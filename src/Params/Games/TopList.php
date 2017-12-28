@@ -1,9 +1,9 @@
 <?php
 
-namespace TwitchHelper\Params\Games;
+namespace Neok\Twitch\Params\Games;
 
-use TwitchHelper\Params\AbstractParams;
-use TwitchHelper\Params\Common\Links;
+use Neok\Twitch\Params\AbstractParams;
+use Neok\Twitch\Params\Common\Links;
 
 
 /**

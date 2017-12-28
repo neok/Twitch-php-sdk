@@ -1,9 +1,9 @@
 <?php
 declare(strict_types=1);
 
-namespace TwitchHelper;
+namespace Neok\Twitch;
 
-use TwitchHelper\HttpClient\HttpClientInterface;
+use Neok\Twitch\HttpClient\HttpClientInterface;
 
 /**
  * Class TwitchClient

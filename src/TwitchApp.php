@@ -1,7 +1,7 @@
 <?php
 declare(strict_types = 1);
 
-namespace TwitchHelper;
+namespace Neok\Twitch;
 
 /**
  * Class TwitchApp

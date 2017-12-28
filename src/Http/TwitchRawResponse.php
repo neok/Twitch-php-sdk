@@ -1,6 +1,6 @@
 <?php
 
-namespace TwitchHelper\Http;
+namespace Neok\Twitch\Http;
 
 /**
  * Class TwitchRawResponse

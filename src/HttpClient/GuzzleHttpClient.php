@@ -1,8 +1,8 @@
 <?php
 
-namespace TwitchHelper\HttpClient;
+namespace Neok\Twitch\HttpClient;
 
-use TwitchHelper\Http\TwitchRawResponse;
+use Neok\Twitch\Http\TwitchRawResponse;
 
 /**
  * Class GuzzleHttpClient

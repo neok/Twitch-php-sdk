@@ -1,8 +1,8 @@
 <?php
 
-namespace TwitchHelper\Params\Games;
+namespace Neok\Twitch\Params\Games;
 
-use TwitchHelper\Params\AbstractParams;
+use Neok\Twitch\Params\AbstractParams;
 
 /**
  * Class MediaItem

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types=1);
 
-namespace TwitchHelper;
+namespace Neok\Twitch;
 
 use GuzzleHttp\Client;
-use TwitchHelper\Authentication\OAuth2Client;
-use TwitchHelper\Exceptions\TwitchHelperException;
-use TwitchHelper\HttpClient\GuzzleHttpClient;
+use Neok\Twitch\Authentication\OAuth2Client;
+use Neok\Twitch\Exceptions\TwitchHelperException;
+use Neok\Twitch\HttpClient\GuzzleHttpClient;
 
 /**
  * Class Twitch

@@ -1,12 +1,12 @@
 <?php
 declare(strict_types = 1);
 
-namespace TwitchHelper\Params;
+namespace Neok\Twitch\Params;
 
 use Guzzle\Inflection\Inflector;
-use TwitchHelper\Params\Games\Game;
-use TwitchHelper\Params\Games\Item;
-use TwitchHelper\Params\Games\MediaItem;
+use Neok\Twitch\Params\Games\Game;
+use Neok\Twitch\Params\Games\Item;
+use Neok\Twitch\Params\Games\MediaItem;
 
 /**
  * Class AbstractParams

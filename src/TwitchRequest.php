@@ -1,8 +1,8 @@
 <?php
 
-namespace TwitchHelper;
+namespace Neok\Twitch;
 
-use TwitchHelper\Authentication\AccessToken;
+use Neok\Twitch\Authentication\AccessToken;
 
 class TwitchRequest
 {

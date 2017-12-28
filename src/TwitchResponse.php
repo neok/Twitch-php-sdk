@@ -1,6 +1,6 @@
 <?php
 
-namespace TwitchHelper;
+namespace Neok\Twitch;
 
 /**
  * Class TwitchResponse
