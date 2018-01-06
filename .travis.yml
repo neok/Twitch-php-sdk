@@ -22,4 +22,4 @@ install:
 
 script:
   - docker-compose up -d
-  - docker run -it --rm -v $(pwd):/project twitchhelper_twitch_php "phpunit"
+  - docker run -it --rm -v $(pwd):/project twitch_php "phpunit"
