@@ -1,11 +1,11 @@
 <?php
 
-namespace TwitchHelper\Tests;
+namespace Neok\Tests;
 
-use TwitchHelper\TwitchApp;
+use Neok\Twitch\TwitchApp;
 
 /**
- * Class TwitchAppTest
+ * Class TwitchAppTest.
  */
 class TwitchAppTest extends \PHPUnit_Framework_TestCase
 {
